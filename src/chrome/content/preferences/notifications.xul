@@ -3,7 +3,7 @@
 /*
  * Blinking Alert
  *
- * Copyright(c) 2007-2014 Iwasa Kazmi
+ * Copyright(c) 2007-2020 Iwasa Kazmi
  * All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,26 +27,22 @@
 -->
 <!DOCTYPE overlay SYSTEM "chrome://blinkingalert/locale/notifications.dtd">
 <overlay id="BlinkingAlertNotificationsDialogPane"
-         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+         xmlns:html="http://www.w3.org/1999/xhtml">
   <prefpane id="NotificationsDialogPane">
-    <preferences>
-      <preference id="blinkingAlert.disableAutoHide" name="extensions.blinkingAlert.disableAutoHide" type="bool"/>
-      <preference id="blinkingAlert.blinkInterval" name="extensions.blinkingAlert.blinkInterval" type="int"/>
-      <preference id="blinkingAlert.blinkColor" name="extensions.blinkingAlert.blinkColor" type="string"/>
-      <preference id="blinkingAlert.closeOnClick" name="extensions.blinkingAlert.closeOnClick" type="bool"/>
-    </preferences>
-
-    <checkbox id="disableAutoHide"  class="indent" label="&disableAutoHide.label;" preference="blinkingAlert.disableAutoHide"/>
-    <checkbox id="closeOnClick"  class="indent" label="&closeOnClick.label;" preference="blinkingAlert.closeOnClick"/>
-    <hbox class="indent" align="center">
-      <label id="blinkIntervalLabel" value="&blinkInterval.label;" control="blinkInterval"/>
-      <textbox id="blinkInterval" type="number" min="0" preference="blinkingAlert.blinkInterval" style="width:5em;"/>
-      <label id="blinkIntervalUnit" value="&blinkIntervalUnit.label; (0:&noBlink.label;)" control="blinkInterval"/>
-    </hbox>
-	<hbox class="indent" align="center">
-      <label id="blinkColorLabel" value="&blinkColor.label;" control="blinkColor"/>
-      <colorpicker type="button" id="blinkColor" palettename="standard" preference="blinkingAlert.blinkColor"/>
-	</hbox>
-    <separator/>
+    <vbox>
+      <checkbox id="disableAutoHide"  class="indent" label="&disableAutoHide.label;" preference="extensions.blinkingAlert.disableAutoHide"/>
+      <checkbox id="closeOnClick"  class="indent" label="&closeOnClick.label;" preference="extensions.blinkingAlert.closeOnClick"/>
+      <hbox class="indent" align="center">
+        <label id="blinkIntervalLabel" value="&blinkInterval.label;" control="blinkInterval"/>
+        <html:input id="blinkInterval" type="number" min="0" preference="extensions.blinkingAlert.blinkInterval" style="width:5em;"/>
+        <label id="blinkIntervalUnit" value="&blinkIntervalUnit.label; (0:&noBlink.label;)" control="blinkInterval"/>
+      </hbox>
+      <hbox class="indent" align="center">
+          <label id="blinkColorLabel" value="&blinkColor.label;" control="blinkColor"/>
+          <html:input type="color" id="blinkColor" preference="extensions.blinkingAlert.blinkColor"/>
+      </hbox>
+    </vbox>
   </prefpane>
+  <script src="chrome://blinkingalert/content/preferences/notifications.js"/>
 </overlay>

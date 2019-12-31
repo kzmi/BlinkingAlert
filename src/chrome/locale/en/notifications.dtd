@@ -2,7 +2,7 @@
 /*
  * Blinking Alert
  *
- * Copyright(c) 2007-2014 Iwasa Kazmi
+ * Copyright(c) 2007-2020 Iwasa Kazmi
  * All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,9 +24,10 @@
  * THE SOFTWARE.
  */
 -->
-<!ENTITY disableAutoHide.label			"Disable Auto-hide">
-<!ENTITY blinkInterval.label	"Blink Interval">
-<!ENTITY blinkIntervalUnit.label	"msec">
-<!ENTITY noBlink.label			"no blink">
-<!ENTITY blinkColor.label		"Blink Color">
-<!ENTITY closeOnClick.label		"Close on click">
+<!ENTITY prefDialog.title         "Blinking Alert">
+<!ENTITY disableAutoHide.label    "Disable Auto-hide">
+<!ENTITY blinkInterval.label      "Blink Interval">
+<!ENTITY blinkIntervalUnit.label  "msec">
+<!ENTITY noBlink.label            "no blink">
+<!ENTITY blinkColor.label         "Blink Color">
+<!ENTITY closeOnClick.label       "Close on click">

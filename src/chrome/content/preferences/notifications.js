@@ -22,7 +22,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-pref('extensions.blinkingAlert.disableAutoHide', false);
-pref('extensions.blinkingAlert.blinkInterval', 0);
-pref('extensions.blinkingAlert.blinkColor', '#ff6600');
-pref('extensions.blinkingAlert.closeOnClick', false);
+Preferences.addAll([
+  { id: "extensions.blinkingAlert.disableAutoHide", type: "bool" },
+  { id: "extensions.blinkingAlert.blinkInterval", type: "int" },
+  { id: "extensions.blinkingAlert.blinkColor", type: "string" },
+  { id: "extensions.blinkingAlert.closeOnClick", type: "bool" },
+]);

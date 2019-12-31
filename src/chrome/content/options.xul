@@ -3,7 +3,7 @@
 /*
  * Blinking Alert
  *
- * Copyright(c) 2007-2014 Iwasa Kazmi
+ * Copyright(c) 2007-2020 Iwasa Kazmi
  * All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,21 +25,28 @@
  * THE SOFTWARE.
  */
 -->
-<?xul-overlay href="chrome://messenger/content/preferences/notifications.xul"?>
-<!-- *******************************
-The prefwindow in notifications.xul is a "child" dialog.
-We need a top-level prefwindow as an option dialog.
-*********************************-->
 <?xml-stylesheet href="chrome://global/skin/"?>
 <?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css"?>
-<?xml-stylesheet href="chrome://mozapps/content/preferences/preferences.css"?>
-<!DOCTYPE prefwindow [
-  <!ENTITY % notificationsDTD SYSTEM "chrome://messenger/locale/preferences/notifications.dtd">
-  %notificationsDTD;
-]>
-<prefwindow id="StickAlertOptionsDialog"
-            xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-            dlgbuttons="accept,cancel"
-            title="&notificationsDialog2.title;">
-  <prefpane id="NotificationsDialogPane"/>
-</prefwindow>
+<!DOCTYPE dialog SYSTEM "chrome://blinkingalert/locale/notifications.dtd">
+<dialog id="BlinkingAlertOptionsDialog"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        type="child"
+        buttons="accept,cancel"
+        title="&prefDialog.title;">
+  <vbox>
+    <checkbox id="disableAutoHide"  class="indent" label="&disableAutoHide.label;" preference="extensions.blinkingAlert.disableAutoHide"/>
+    <checkbox id="closeOnClick"  class="indent" label="&closeOnClick.label;" preference="extensions.blinkingAlert.closeOnClick"/>
+    <hbox class="indent" align="center">
+      <label id="blinkIntervalLabel" value="&blinkInterval.label;" control="blinkInterval"/>
+      <html:input id="blinkInterval" type="number" min="0" preference="extensions.blinkingAlert.blinkInterval" style="width:5em;"/>
+      <label id="blinkIntervalUnit" value="&blinkIntervalUnit.label; (0:&noBlink.label;)" control="blinkInterval"/>
+    </hbox>
+    <hbox class="indent" align="center">
+        <label id="blinkColorLabel" value="&blinkColor.label;" control="blinkColor"/>
+        <html:input type="color" id="blinkColor" preference="extensions.blinkingAlert.blinkColor"/>
+    </hbox>
+  </vbox>
+  <script src="chrome://global/content/preferencesBindings.js"/>
+  <script src="chrome://blinkingalert/content/preferences/notifications.js"/>
+</dialog>
