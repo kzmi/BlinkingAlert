@@ -26,12 +26,11 @@
 
   const debug = false;
 
-  const consoleService = window.Components.classes["@mozilla.org/consoleservice;1"]
-    .getService(window.Components.interfaces.nsIConsoleService);
+  const { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
   function log(msg) {
     if (debug) {
-      consoleService.logStringMessage("Blinking Alert : " + msg);
+      Services.console.logStringMessage("Blinking Alert : " + msg);
     }
   }
 
@@ -57,9 +56,7 @@
 
     // read out our initial settings from prefs.
     try {
-      const prefBranch = window.Components.classes["@mozilla.org/preferences-service;1"]
-        .getService(window.Components.interfaces.nsIPrefService)
-        .getBranch(null);
+      const prefBranch = Services.prefs;
       disableAutoHide = prefBranch.getBoolPref("extensions.blinkingAlert.disableAutoHide");
       blinkInterval = prefBranch.getIntPref("extensions.blinkingAlert.blinkInterval");
       blinkColor = prefBranch.getCharPref("extensions.blinkingAlert.blinkColor");
